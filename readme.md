@@ -99,6 +99,10 @@ This server can be accessed from [http://localhost:9000](http://localhost:9000)
 
 Installation
 
+```
+npm install --save-dev babel-loader @babel/core
+```
+
 Update [webpack.config.js](https://github.com/harryosmar/es6-guides-getting-started/blob/master/webpack.config.js) file, add [babel](https://babeljs.io/) module
 
 ```js
@@ -110,10 +114,28 @@ module: {
 ```
 
 Create [.babelrc]((https://github.com/harryosmar/es6-guides-getting-started/blob/master/.babelrc) configuration file.
+
 To start, you can use the env [preset](https://babeljs.io/docs/en/babel-preset-env), which enables transforms for ES2015+.
+
+```
+npm install @babel/preset-env --save-dev
+```
+
+Then add this configuration to [.babelrc]((https://github.com/harryosmar/es6-guides-getting-started/blob/master/.babelrc)
+
 ```json
 {
   "presets": ["@babel/preset-env"]
 }
+```
+
+## 7. Add npm script
+
+Update [package.json](https://github.com/harryosmar/es6-guides-getting-started/blob/master/package.json), add scripts :
+
+```json
+"build": "npx webpack --config webpack.config.js --mode=development",
+"watch": "webpack --watch",
+"start": "webpack-dev-server --open"
 ```
 
