@@ -11,5 +11,10 @@ module.exports = {
     compress: true,
     port: 9000
   },
+  module: {
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+    ]
+  },
   devtool: 'inline-source-map'
 };

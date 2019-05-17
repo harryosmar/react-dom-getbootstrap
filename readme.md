@@ -57,13 +57,11 @@ Add [webpack.config.js](https://github.com/harryosmar/es6-guides-getting-started
 - Set the `entrypoint` to [app.js](https://github.com/harryosmar/es6-guides-getting-started/blob/master/src/app.js).
 - and the ouput to [bundle.js](https://github.com/harryosmar/es6-guides-getting-started/blob/master/dist/build.js)
 
-```
-{
-	entry: './src/app.js',
-	output: {
-		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist')
-	}
+```js
+entry: './src/app.js',
+output: {
+	filename: 'bundle.js',
+	path: path.resolve(__dirname, 'dist')
 }
 ```
 
@@ -84,17 +82,38 @@ npm install --save-dev webpack-dev-server
 
 Update [webpack.config.js](https://github.com/harryosmar/es6-guides-getting-started/blob/master/webpack.config.js) file, add dev-server configuration](https://webpack.js.org/configuration/dev-server)
 
-```
-{
-	devServer: {
-	    contentBase: path.join(__dirname, 'dist'),
-	    compress: true,
-	    port: 9000
-  	},
-  	devtool: 'inline-source-map'
-}
+```js
+devServer: {
+	contentBase: path.join(__dirname, 'dist'),
+	compress: true,
+	port: 9000
+},
+devtool: 'inline-source-map'
 ```
 
 This server can be accessed from [http://localhost:9000](http://localhost:9000)
 
+## 6. Add babel
+
+[babel](https://babeljs.io/) [ES2015 features](http://es6-features.org/#Constants) transpiler.
+
+Installation
+
+Update [webpack.config.js](https://github.com/harryosmar/es6-guides-getting-started/blob/master/webpack.config.js) file, add [babel](https://babeljs.io/) module
+
+```js
+module: {
+  rules: [
+    { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+  ]
+}
+```
+
+Create [.babelrc]((https://github.com/harryosmar/es6-guides-getting-started/blob/master/.babelrc) configuration file.
+To start, you can use the env [preset](https://babeljs.io/docs/en/babel-preset-env), which enables transforms for ES2015+.
+```json
+{
+  "presets": ["@babel/preset-env"]
+}
+```
 
