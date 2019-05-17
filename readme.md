@@ -80,7 +80,7 @@ npm install --save-dev webpack-dev-server
 ```
 
 
-Update [webpack.config.js](https://github.com/harryosmar/es6-guides-getting-started/blob/master/webpack.config.js) file, add dev-server configuration](https://webpack.js.org/configuration/dev-server)
+Update [webpack.config.js](https://github.com/harryosmar/es6-guides-getting-started/blob/master/webpack.config.js) file, add [dev-server configuration](https://webpack.js.org/configuration/dev-server)
 
 ```js
 devServer: {
@@ -113,7 +113,7 @@ module: {
 }
 ```
 
-Create [.babelrc]((https://github.com/harryosmar/es6-guides-getting-started/blob/master/.babelrc) configuration file.
+Create [.babelrc](https://github.com/harryosmar/es6-guides-getting-started/blob/master/.babelrc) configuration file.
 
 To start, you can use the env [preset](https://babeljs.io/docs/en/babel-preset-env), which enables transforms for ES2015+.
 
@@ -121,7 +121,7 @@ To start, you can use the env [preset](https://babeljs.io/docs/en/babel-preset-e
 npm install @babel/preset-env --save-dev
 ```
 
-Then add this configuration to [.babelrc]((https://github.com/harryosmar/es6-guides-getting-started/blob/master/.babelrc)
+Then add this configuration to [.babelrc](https://github.com/harryosmar/es6-guides-getting-started/blob/master/.babelrc)
 
 ```json
 {
