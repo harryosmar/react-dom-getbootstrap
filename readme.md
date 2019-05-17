@@ -139,3 +139,18 @@ Update [package.json](https://github.com/harryosmar/es6-guides-getting-started/b
 "start": "webpack-dev-server --open"
 ```
 
+## 8. build then start
+
+```
+npm run build
+```
+will create `dist/bundle.js` file, add this file to [.gitignore](https://github.com/harryosmar/es6-guides-getting-started/blob/master/.gitignore)
+
+
+```
+npm run start
+```
+will open browser with this url [http://localhost:9000](http://localhost:9000)
+
+> Every time you do the changes to [app.js](https://github.com/harryosmar/es6-guides-getting-started/blob/master/src/app.js) file, the build process will run then refresh the browser automatically.
+
