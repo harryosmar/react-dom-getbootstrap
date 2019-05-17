@@ -134,7 +134,7 @@ Then add this configuration to [.babelrc](https://github.com/harryosmar/es6-guid
 Update [package.json](https://github.com/harryosmar/es6-guides-getting-started/blob/master/package.json), add scripts :
 
 ```json
-"build": "npx webpack --config webpack.config.js --mode=development",
+"build": "webpack --config webpack.config.js --mode=development",
 "watch": "webpack --watch",
 "start": "webpack-dev-server --open"
 ```
