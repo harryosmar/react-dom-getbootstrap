@@ -67,3 +67,34 @@ Add [webpack.config.js](https://github.com/harryosmar/es6-guides-getting-started
 }
 ```
 
+## 5. Configure the webpack - setting dev env
+
+links :
+- [webpack development env guide](https://webpack.js.org/guides/development/)
+	- [webpack-dev-server](https://webpack.js.org/guides/development/#using-webpack-dev-server)
+	- [dev-server configuration](https://webpack.js.org/configuration/dev-server)
+- [devtool](https://webpack.js.org/configuration/devtool), to setup the source map
+
+Install [webpack-dev-server](https://webpack.js.org/guides/development/#using-webpack-dev-server)
+
+```
+npm install --save-dev webpack-dev-server
+```
+
+
+Update [webpack.config.js](https://github.com/harryosmar/es6-guides-getting-started/blob/master/webpack.config.js) file, add dev-server configuration](https://webpack.js.org/configuration/dev-server)
+
+```
+{
+	devServer: {
+	    contentBase: path.join(__dirname, 'dist'),
+	    compress: true,
+	    port: 9000
+  	},
+  	devtool: 'inline-source-map'
+}
+```
+
+This server can be accessed from [http://localhost:9000](http://localhost:9000)
+
+
