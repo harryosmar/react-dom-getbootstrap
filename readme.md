@@ -154,3 +154,12 @@ will open browser with this url [http://localhost:9000](http://localhost:9000)
 
 > Every time you do the changes to [app.js](https://github.com/harryosmar/es6-guides-getting-started/blob/master/src/app.js) file, the build process will run then refresh the browser automatically.
 
+### 9. Jest
+
+- [Jest Getting Started](https://jestjs.io/docs/en/getting-started)
+
+```
+npm install --save-dev jest
+./node_modules/jest/bin/jest.js --init
+npm run test
+```
