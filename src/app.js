@@ -1,11 +1,5 @@
-import _ from 'lodash';
+import Controller from '../src/snake/Controller.js';
 
-const component = () => {
-    const element = document.createElement('div');
-    console.log({ a:1, ...{b:2}});
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    console.log(...[1, 2, 3].map((n) => n + 1));
-    return element;
-};
-  
-document.body.appendChild(component());
+const SnakeController = new Controller(1000);
+
+SnakeController.start();
