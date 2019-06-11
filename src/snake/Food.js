@@ -10,15 +10,6 @@ export default class Food extends Block {
         this.spawn();
     }
 
-    getOffsetX() {
-        return this.x.toFixed(0);
-    }
-
-
-    getOffsetY() {
-        return this.y.toFixed(0);
-    }
-
     draw() {
         this.Canvas.getContext().fillStyle = this.color;
         this.Canvas.getContext().fillRect(this.x, this.y, this.width, this.height);

@@ -1,18 +1,35 @@
-import Canvas from './Canvas.js';
-
 export default class Block {
-    constructor(Canvas) {
-        this.Canvas = Canvas;
-
-        const columns = this.Canvas.getColumns();
-        const rows = this.Canvas.getRows();
-        const canvasWidth = this.Canvas.getWidth();
-        const canvasHeight = this.Canvas.getHeight();
-
-        this.width = canvasWidth / columns;
-        this.height = canvasHeight / rows;
+    constructor(width, height, color, canvasWidth, canvasHeight) {
+        this.width = width;
+        this.height = height;
+        this.color = color;
+        this.canvasWidth = canvasWidth;
+        this.canvasHeight = canvasHeight;
 
         this.x = 0;
         this.y = 0;
+    }
+
+    getOffsetX() {
+        return this.x;
+    }
+
+
+    getOffsetY() {
+        return this.y;
+    }
+
+    getColor() {
+        return this.color;
+    }
+
+    setPosition(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    randomPosition() {
+        this.x = Math.floor(Math.floor(Math.random() * this.canvasWidth) / this.width) * this.width;
+        this.y = Math.floor(Math.floor(Math.random() * this.canvasHeight) / this.height) * this.height;
     }
 }
