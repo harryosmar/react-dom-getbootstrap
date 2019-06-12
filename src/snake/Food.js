@@ -1,22 +1,9 @@
-import Canvas from './Canvas.js';
 import Block from './Block.js';
 
 export default class Food extends Block {
-    constructor(Canvas) {
-        super(Canvas);
+    constructor(width, height, color, canvasWidth, canvasHeight) {
+        super(width, height, color, canvasWidth, canvasHeight);
 
-        this.Canvas = Canvas;
-        this.color = 'red';
-        this.spawn();
-    }
-
-    draw() {
-        this.Canvas.getContext().fillStyle = this.color;
-        this.Canvas.getContext().fillRect(this.x, this.y, this.width, this.height);
-    }
-
-    spawn() {
-        this.x = Math.floor(Math.floor(Math.random() * this.Canvas.getWidth()) / this.width) * this.width; // random position mod s must be equal to 0
-        this.y = Math.floor(Math.floor(Math.random() * this.Canvas.getHeight()) / this.height) * this.height;
+        this.randomPosition();
     }
 }

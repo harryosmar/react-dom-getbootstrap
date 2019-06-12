@@ -1,26 +1,20 @@
+import Score from './Score.js';
+
 export default class ScoreBoard {
-    /**
-     * @todo implement typescript for class arg
-     */
-    constructor(containerId) {
+    constructor(containerId, Score) {
         this.scoreElement = document.getElementById(containerId);
-        /**
-         * todo: modify using react state
-         */
-        this.score = 0;
+        this.Score = Score;
     }
 
     increment() {
-        this.score++;
-        this.setScoreElement();
+        this.scoreElement.innerHTML = this.Score.increment();
     }
 
     reset() {
-        this.score = 0;
-        this.setScoreElement();
+        this.scoreElement.innerHTML = this.Score.reset();
     }
 
-    setScoreElement() {
-        this.scoreElement.innerHTML = this.score;
+    setScore() {
+        this.scoreElement.innerHTML = this.Score.getScore();
     }
 }

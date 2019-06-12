@@ -10,6 +10,14 @@ export default class Block {
         this.y = 0;
     }
 
+    getWidth() {
+        return this.width;
+    }
+
+    getHeight() {
+        return this.height;
+    }
+
     getOffsetX() {
         return this.x;
     }

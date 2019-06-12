@@ -23,6 +23,10 @@ export default class Snake extends Block {
         return this.trails;
     }
 
+    getTrails() {
+        return this.trails;
+    }
+
     isHitTrail(trails, headOffsetX, headOffsetY) {
         // snake length greater than 1
         if (trails.length <= 1) {
@@ -80,29 +84,29 @@ export default class Snake extends Block {
         };
     }
 
-    checkIfEatTheFood(foodOffsetX, foodOffsetY) {
+    isEatTheFood(foodOffsetX, foodOffsetY) {
         return this.x.toFixed(0) === foodOffsetX.toFixed(0)
             && this.y.toFixed(0) === foodOffsetY.toFixed(0);
     }
 
     goUp() {
         this.xs = 0;
-        this.ys = -1 * this.height;
+        this.ys = this.ys > 0 ? this.ys : -1 * this.height;
     }
 
     goDown() {
         this.xs = 0;
-        this.ys = this.height;
+        this.ys = this.ys < 0 ? this.ys : this.height;
     }
 
     goLeft() {
         this.ys = 0;
-        this.xs = -1 * this.width;
+        this.xs = this.xs > 0 ? this.xs : -1 * this.width;
     }
 
     goRight() {
         this.ys = 0;
-        this.xs = this.width;
+        this.xs = this.xs < 0 ? this.xs : this.width;
     }
 
     pause() {
