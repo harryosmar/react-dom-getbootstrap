@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import SnakeApp from './components/SnakeApp.js';
-import ScoreReducer from './reducers/Score.js';
+import MinesweeperApp from './components/MinesweeperApp.js';
+import GameReducer from './reducers/Game.js';
 
 
 const store = createStore(
     combineReducers
     ({
-        score: ScoreReducer,
+        game: GameReducer,
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
@@ -19,8 +19,8 @@ const store = createStore(
 ReactDOM.render(
     (
         <Provider store={ store }>
-            <SnakeApp />
+            <MinesweeperApp />
         </Provider>
     ),
-    document.getElementById('snake-app-container')
+    document.getElementById('minesweeper-app-container')
 );
