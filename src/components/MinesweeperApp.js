@@ -1,18 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startGame, endGame, resetGame, resetGameComplete, incrementGameTime } from '../actions/Game.js';
+import { startGame, endGame, resetGame, incrementGameTime } from '../actions/Game.js';
 import GameBoard from './GameBoard.js';
 import ScoreBoard from './ScoreBoard.js';
 import ControlBoard from './ControlBoard.js';
+import Minesweeper from '../minesweeper/Minesweeper.js';
+import {setRealTable, updateDisplayTable} from '../actions/Table.js';
 
 class MinesweeperApp extends React.Component {
     constructor(props) {
         super(props);
+
         this.timer;
+        this.minesweeper;
+        this.generateMinesweeper();
     }
 
     componentDidMount() {
-        // this.start();
+        this.generateMinesweeper();
+    }
+
+    generateMinesweeper = () => {
+        const minesPosition = new Array(this.props.game.rows * this.props.game.columns).fill(null).map( (value, index) => index);
+        this.minesweeper = new Minesweeper(this.props.game.rows, this.props.game.columns, _.sampleSize(minesPosition, 10));
+
+        this.props.dispatch(setRealTable(this.minesweeper._getTable()));
+        this.props.dispatch(updateDisplayTable(this.minesweeper.getDisplayTable()));
+
+        return this.minesweeper;
     }
 
     start = () => {
@@ -28,16 +43,25 @@ class MinesweeperApp extends React.Component {
     reset = () => {
         clearInterval(this.timer);
         this.props.dispatch(resetGame());
-        // reset all cells here
-        this.props.dispatch(resetGameComplete());
+        this.generateMinesweeper();
     };
 
     render() {
         return (
-            <div>
-                <GameBoard start={this.start} end={this.end}/>
-                <ScoreBoard />
-                <ControlBoard reset={this.reset}/>
+            <div className="container clearfix">
+                <div className="container__left">
+                    <div className="board">
+                        <GameBoard start={this.start} end={this.end} minesweeper={this.minesweeper}/>
+                    </div>
+                </div>
+                <div className="container__right">
+                    <div className="timer">
+                        <ScoreBoard />
+                    </div>
+                    <div className="control">
+                        <ControlBoard reset={this.reset}/>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -46,6 +70,7 @@ class MinesweeperApp extends React.Component {
 const mapStateToProps = (state) => (
     {
         game: state.game,
+        table: state.table,
     }
 );
 

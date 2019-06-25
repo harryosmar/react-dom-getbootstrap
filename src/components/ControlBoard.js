@@ -11,7 +11,13 @@ class ControlBoard extends React.Component {
     render() {
         return (
             <div>
-                <button disabled={!this.props.game.start} onClick={this.onClickStartOver}>{this.props.game.end ? 'Play Again' : 'Start Over'}</button>
+                <button
+                    className="control__button"
+                    disabled={!this.props.game.start}
+                    onClick={this.onClickStartOver}
+                >
+                    {this.props.game.end ? 'Play Again' : 'Start Over'}
+                </button>
             </div>
         );
     }

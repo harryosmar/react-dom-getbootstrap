@@ -1,8 +1,9 @@
 const gameReducerDefaultState = {
     start: false,
     end: false,
-    reset: false,
-    time: 0
+    time: 0,
+    columns: 8,
+    rows: 8,
 };
 
 
@@ -13,9 +14,7 @@ export default (prevState = gameReducerDefaultState, action) => {
         case 'END':
             return {...prevState, end: true};
         case 'RESET':
-            return {...prevState, start: false, end: false, reset: true, time: 0};
-        case 'RESET_COMPLETE':
-            return {...prevState, reset: false};
+            return {...prevState, start: false, end: false, time: 0};
         case 'INCREMENT_TIME':
             return {...prevState, time: prevState.time + 1};
         default:

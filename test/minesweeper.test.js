@@ -41,52 +41,6 @@ test('should be to generate all angles', () => {
         {indexRow: 3, indexColumn: 1},
         {indexRow: 3, indexColumn: 3}
     ]);
-
-    expect(minesweeper._getAnglesArr(2, 2, 2)).toEqual([
-        { indexRow: 0, indexColumn: 2 },
-        { indexRow: 4, indexColumn: 2 },
-        { indexRow: 2, indexColumn: 0 },
-        { indexRow: 2, indexColumn: 4 },
-        { indexRow: 0, indexColumn: 1 },
-        { indexRow: 0, indexColumn: 3 },
-        { indexRow: 4, indexColumn: 1 },
-        { indexRow: 4, indexColumn: 3 },
-        { indexRow: 0, indexColumn: 0 },
-        { indexRow: 0, indexColumn: 4 },
-        { indexRow: 4, indexColumn: 0 },
-        { indexRow: 4, indexColumn: 4 },
-        { indexRow: 1, indexColumn: 0 },
-        { indexRow: 3, indexColumn: 0 },
-        { indexRow: 1, indexColumn: 4 },
-        { indexRow: 3, indexColumn: 4 }
-    ]);
-
-    expect(minesweeper._getAnglesArr(3, 3, 3)).toEqual([
-        { indexRow: 0, indexColumn: 3 },
-        { indexRow: 6, indexColumn: 3 },
-        { indexRow: 3, indexColumn: 0 },
-        { indexRow: 3, indexColumn: 6 },
-        { indexRow: 0, indexColumn: 2 },
-        { indexRow: 0, indexColumn: 4 },
-        { indexRow: 6, indexColumn: 2 },
-        { indexRow: 6, indexColumn: 4 },
-        { indexRow: 0, indexColumn: 1 },
-        { indexRow: 0, indexColumn: 5 },
-        { indexRow: 6, indexColumn: 1 },
-        { indexRow: 6, indexColumn: 5 },
-        { indexRow: 0, indexColumn: 0 },
-        { indexRow: 0, indexColumn: 6 },
-        { indexRow: 6, indexColumn: 0 },
-        { indexRow: 6, indexColumn: 6 },
-        { indexRow: 2, indexColumn: 0 },
-        { indexRow: 4, indexColumn: 0 },
-        { indexRow: 2, indexColumn: 6 },
-        { indexRow: 4, indexColumn: 6 },
-        { indexRow: 1, indexColumn: 0 },
-        { indexRow: 5, indexColumn: 0 },
-        { indexRow: 1, indexColumn: 6 },
-        { indexRow: 5, indexColumn: 6 }
-    ]);
 });
 
 

@@ -1,0 +1,14 @@
+.control {
+    margin-top: 2rem;
+}
+.control__button {
+    font-size: $l-size;
+    padding: 0.5rem;
+}
+
+@media (max-width: $desktop-breakpoint) {
+    .control {
+        display: inline-block;
+        margin-left: 3rem;
+    }
+}

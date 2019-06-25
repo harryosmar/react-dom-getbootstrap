@@ -1,0 +1,28 @@
+.board {
+    font-size: $l-size;
+}
+
+.board__table {
+    border-collapse: collapse;
+}
+
+.board__table__tr__td{
+    text-align: center;
+    border: gray solid 1px;
+    padding: 0;
+}
+
+.board__table__tr__td_button{
+    width: 5rem;
+    height: 5rem;
+}
+
+.board__table__tr__td_button[disabled]{
+    background: transparent;
+}
+
+@media (max-width: $desktop-breakpoint) {
+    .board {
+        display: inline-block;
+    }
+}

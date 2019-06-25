@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const ScoreBoard = (props) => (
     <div>
-        {props.game.time}
+        Time : {props.game.time}
     </div>
 );
 

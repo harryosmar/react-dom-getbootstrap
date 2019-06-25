@@ -1,3 +1,4 @@
+import _ from 'lodash';
 export default class Minesweeper {
     constructor(rowsLength = 8, columnsLength = 8, minePositions = []) {
         this.columnsLength = columnsLength;
@@ -30,30 +31,17 @@ export default class Minesweeper {
         return this.table;
     }
 
-    _getAnglesArr(indexRow, indexColumn, n = 1) {
+    _getAnglesArr(indexRow, indexColumn) {
         const angles = [];
 
-        angles.push({indexRow: indexRow - n, indexColumn}); // top
-        angles.push({indexRow: indexRow + n, indexColumn}); // bottom
-        angles.push({indexRow, indexColumn: indexColumn - n}); // left
-        angles.push({indexRow, indexColumn: indexColumn + n}); // rigth
-
-        for (let i=1; i <= n; i++) {
-            angles.push({indexRow: indexRow - n, indexColumn: indexColumn - i}); // top left
-            angles.push({indexRow: indexRow - n, indexColumn: indexColumn + i}); // top right
-            angles.push({indexRow: indexRow + n, indexColumn: indexColumn - i}); // bottom left
-            angles.push({indexRow: indexRow + n, indexColumn: indexColumn + i}); // bottom right
-        }
-
-        for (let i=1; i < n; i++) {
-            // left side vertical
-            angles.push({indexRow: indexRow - i, indexColumn: indexColumn - n});
-            angles.push({indexRow: indexRow + i, indexColumn: indexColumn - n});
-
-            // right side vertical
-            angles.push({indexRow: indexRow - i, indexColumn: indexColumn + n});
-            angles.push({indexRow: indexRow + i, indexColumn: indexColumn + n});
-        }
+        angles.push({indexRow: indexRow - 1, indexColumn}); // top
+        angles.push({indexRow: indexRow + 1, indexColumn}); // bottom
+        angles.push({indexRow, indexColumn: indexColumn - 1}); // left
+        angles.push({indexRow, indexColumn: indexColumn + 1}); // rigth
+        angles.push({indexRow: indexRow - 1, indexColumn: indexColumn - 1}); // top left
+        angles.push({indexRow: indexRow - 1, indexColumn: indexColumn + 1}); // top right
+        angles.push({indexRow: indexRow + 1, indexColumn: indexColumn - 1}); // bottom left
+        angles.push({indexRow: indexRow + 1, indexColumn: indexColumn + 1}); // bottom right
 
         return angles;
     }
@@ -133,5 +121,9 @@ export default class Minesweeper {
 
     getDisplayTable() {
         return this.displayTable;
+    }
+
+    getInitialDisplayValue() {
+        return this.initialDisplayValue;
     }
 }

@@ -1,0 +1,28 @@
+.container {
+    max-width: 65rem;
+    margin: 0 auto;
+    padding: 0 $m-size;
+}
+
+.container__left, .container__right {
+    float: left;
+}
+
+.container__right {
+    margin-left: 5rem;
+}
+
+@media (max-width: $desktop-breakpoint) {
+    .container {
+        padding: 0;
+    }
+
+    .container__left, .container__right {
+        width: 100%;
+        text-align: center;
+    }
+
+    .container__right {
+        margin-left: 0;
+    }
+}
