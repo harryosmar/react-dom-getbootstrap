@@ -44,7 +44,7 @@ test('should be to generate all angles', () => {
 });
 
 
-test('should be false when hit the mine and viceversa', () => {
+test('win should be false when hit the mine and viceversa', () => {
     const minesweeper = new Minesweeper(
         2,
         2,
@@ -83,6 +83,59 @@ test('should be false when hit the mine and viceversa', () => {
         [1, 1],
         [1, 'x'],
     ]);
+    expect(minesweeper.getWinDisplayTable()).toEqual([
+        [1, 1],
+        [1, ''],
+    ]);
+    expect(minesweeper.isWin()).toBe(false);
+});
+
+test('win should be true', () => {
+    const minesweeper = new Minesweeper(
+        2,
+        2,
+        [3]
+    );
+    expect(minesweeper._getTable()).toEqual([
+        [1, 1],
+        [1, 'x'],
+    ]);
+
+    expect(minesweeper.getWinDisplayTable()).toEqual([
+        [1, 1],
+        [1, ''],
+    ]);
+
+    expect(minesweeper.getDisplayTable()).toEqual([
+        ['', ''],
+        ['', ''],
+    ]);
+
+    expect(minesweeper.setPosition(0, 0)).toBe(true);
+    expect(minesweeper.getDisplayTable()).toEqual([
+        [1, ''],
+        ['', ''],
+    ]);
+
+    expect(minesweeper.setPosition(0, 1)).toBe(true);
+    expect(minesweeper.getDisplayTable()).toEqual([
+        [1, 1],
+        ['', ''],
+    ]);
+
+    expect(minesweeper.setPosition(1, 0)).toBe(true);
+    expect(minesweeper.getDisplayTable()).toEqual([
+        [1, 1],
+        [1, ''],
+    ]);
+
+    expect(minesweeper.setPosition(1, 0)).toBe(true);
+    expect(minesweeper.getDisplayTable()).toEqual([
+        [1, 1],
+        [1, ''],
+    ]);
+
+    expect(minesweeper.isWin()).toBe(true);
 });
 
 
@@ -101,6 +154,17 @@ test('should be able to open recursively the empty/0 cell value', () => {
         [1, 'x', 'x', 1, ' ', ' ', ' ', ' '],
         [2, 3, 2, 1, ' ', ' ', ' ', ' '],
         ['x', 1, ' ', ' ', ' ', ' ', ' ', ' '],
+    ]);
+
+    expect(minesweeper.getWinDisplayTable()).toEqual([
+        [1, '', 1, ' ', 1, '', 2, ''],
+        [1, 1, 1, 1, 3, 3, 3, 1],
+        [' ', ' ', ' ', 2, '', '', 2, 1],
+        [' ', ' ', ' ', 2, '', 3, 2, ''],
+        [1, 2, 2, 2, 1, 1, 1, 1],
+        [1, '', '', 1, ' ', ' ', ' ', ' '],
+        [2, 3, 2, 1, ' ', ' ', ' ', ' '],
+        ['', 1, ' ', ' ', ' ', ' ', ' ', ' '],
     ]);
 
     expect(minesweeper.getDisplayTable()).toEqual([

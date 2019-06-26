@@ -12,6 +12,7 @@ export default class Minesweeper {
 
         this.table = new Array(this.rowsLength).fill(this.notMineNorHintValue).map(row => new Array(this.columnsLength).fill(this.notMineNorHintValue));
         this.displayTable = new Array(this.rowsLength).fill(this.initialDisplayValue).map(row => new Array(this.columnsLength).fill(this.initialDisplayValue));
+        this.winDisplayTable;
         this._initMinesPlacement(minePositions);
     }
 
@@ -23,6 +24,7 @@ export default class Minesweeper {
         });
 
         this.table = this._generateHintNumbers(this.table);
+        this.winDisplayTable = _.cloneDeep(this.table).map(row => row.map(value => value === this.mineValue ? this.initialDisplayValue : value));
 
         return this.table;
     }
@@ -123,7 +125,15 @@ export default class Minesweeper {
         return this.displayTable;
     }
 
+    getWinDisplayTable() {
+        return this.winDisplayTable;
+    }
+
     getInitialDisplayValue() {
         return this.initialDisplayValue;
+    }
+
+    isWin() {
+        return _.isEqual(this.getDisplayTable(), this.getWinDisplayTable());
     }
 }

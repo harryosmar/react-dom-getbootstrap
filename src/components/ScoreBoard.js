@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { secondsToTime } from '../formatter/timeFormatter.js';
 
 const ScoreBoard = (props) => (
     <div>
-        Time : {props.game.time}
+        Time {secondsToTime(props.game.time)}
     </div>
 );
 

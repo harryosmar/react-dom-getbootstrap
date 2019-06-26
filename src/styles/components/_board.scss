@@ -21,6 +21,11 @@
     background: transparent;
 }
 
+.board__table__tr__td_button--pause{
+    background: black !important;
+    color: black;
+}
+
 @media (max-width: $desktop-breakpoint) {
     .board {
         display: inline-block;

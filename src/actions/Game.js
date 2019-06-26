@@ -14,4 +14,12 @@ const incrementGameTime = () => ({
     type: 'INCREMENT_TIME'
 });
 
-export { startGame, endGame, resetGame, incrementGameTime };
+const winTheGame = () => ({
+    type: 'WIN'
+});
+
+const tooglePause = () => ({
+    type: 'TOOGLE_PAUSE'
+});
+
+export { startGame, endGame, resetGame, incrementGameTime, winTheGame, tooglePause };

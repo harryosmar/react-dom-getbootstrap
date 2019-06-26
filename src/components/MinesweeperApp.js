@@ -32,16 +32,24 @@ class MinesweeperApp extends React.Component {
 
     start = () => {
         this.props.dispatch(startGame());
-        this.timer = setInterval(() => { this.props.dispatch(incrementGameTime()); }, 1000);
+        this.resume();
     };
+
+    pause = () => {
+        clearInterval(this.timer);
+    }
+
+    resume = () => {
+        this.timer = setInterval(() => { this.props.dispatch(incrementGameTime()); }, 1000);
+    }
 
     end = () => {
         this.props.dispatch(endGame());
-        clearInterval(this.timer);
+        this.pause();
     };
 
     reset = () => {
-        clearInterval(this.timer);
+        this.pause();
         this.props.dispatch(resetGame());
         this.generateMinesweeper();
     };
@@ -59,7 +67,7 @@ class MinesweeperApp extends React.Component {
                         <ScoreBoard />
                     </div>
                     <div className="control">
-                        <ControlBoard reset={this.reset}/>
+                        <ControlBoard reset={this.reset} pause={this.pause} resume={this.resume}/>
                     </div>
                 </div>
             </div>

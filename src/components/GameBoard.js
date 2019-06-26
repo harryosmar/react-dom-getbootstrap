@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Minesweeper from '../minesweeper/Minesweeper.js';
 import {updateDisplayTable} from '../actions/Table.js';
+import { winTheGame } from '../actions/Game.js';
 
 class GameBoard extends React.Component {
     render() {
@@ -17,7 +18,7 @@ class GameBoard extends React.Component {
                                         className="board__table__tr__td"
                                     >
                                         <button
-                                            className="board__table__tr__td_button"
+                                            className={'board__table__tr__td_button' + (this.props.game.pause ? ' board__table__tr__td_button--pause' : '')}
                                             onClick={(e) => {
                                                 e.preventDefault();
 
@@ -26,15 +27,20 @@ class GameBoard extends React.Component {
                                                 }
 
                                                 const isGameOver = !this.props.minesweeper.setPosition(rowIndex, columnIndex);
-                                                if (isGameOver) {
+                                                const isWin = this.props.minesweeper.isWin();
+                                                if (isGameOver || isWin) {
                                                     this.props.end();
+                                                }
+
+                                                if (isWin) {
+                                                    this.props.dispatch(winTheGame());
                                                 }
 
                                                 this.props.dispatch(updateDisplayTable(
                                                     this.props.minesweeper.getDisplayTable()
                                                 ));
                                             }}
-                                            disabled={value !== this.props.minesweeper.getInitialDisplayValue()}
+                                            disabled={value !== this.props.minesweeper.getInitialDisplayValue() || this.props.game.isWin === true}
                                         >
                                             {value}
                                         </button>
