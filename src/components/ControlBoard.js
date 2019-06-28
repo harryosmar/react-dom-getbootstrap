@@ -20,7 +20,7 @@ class ControlBoard extends React.Component {
             <div>
                 <button
                     className="control__button"
-                    disabled={!this.props.game.start}
+                    disabled={!this.props.game.start || this.props.game.pause}
                     onClick={this.onClickStartOver}
                 >
                     {this.props.game.end ? (this.props.game.isWin ? 'You Win. Play Again' : 'Play Again') : 'Start Over'}

@@ -19,6 +19,7 @@ class GameBoard extends React.Component {
                                     >
                                         <button
                                             className={'board__table__tr__td_button' + (this.props.game.pause ? ' board__table__tr__td_button--pause' : '')}
+                                            disabled={value !== this.props.minesweeper.getInitialDisplayValue() || this.props.game.isWin === true || this.props.game.pause === true}
                                             onClick={(e) => {
                                                 e.preventDefault();
 
@@ -40,7 +41,6 @@ class GameBoard extends React.Component {
                                                     this.props.minesweeper.getDisplayTable()
                                                 ));
                                             }}
-                                            disabled={value !== this.props.minesweeper.getInitialDisplayValue() || this.props.game.isWin === true}
                                         >
                                             {value}
                                         </button>
