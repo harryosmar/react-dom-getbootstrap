@@ -37,11 +37,11 @@ class MinesweeperApp extends React.Component {
 
     pause = () => {
         clearInterval(this.timer);
-    }
+    };
 
     resume = () => {
         this.timer = setInterval(() => { this.props.dispatch(incrementGameTime()); }, 1000);
-    }
+    };
 
     end = () => {
         this.props.dispatch(endGame());
