@@ -8,7 +8,6 @@ import Footer from "./Footer";
 import FooterMenu from "./FooterMenu";
 
 export default class Index extends React.Component {
-
     componentDidMount() {
         import('../../styles/base/_menu.scss');
         document.body.id = 'page-menu';
