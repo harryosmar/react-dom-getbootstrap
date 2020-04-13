@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "react-router-dom/Link";
 
 const Form = (props) => (
     <form>
@@ -24,7 +25,7 @@ const Form = (props) => (
             <button type="button" onClick="window.location.href = 'menu.html';"
                     className="btn btn-primary">Masuk
             </button>
-            <a className="form-link" href="register.html">Daftar</a>
+            <Link to="/register" className="form-link">Daftar</Link>
             <div className="form-footer-link">
                 <a href="#">Lupa kata sandi?</a>
             </div>

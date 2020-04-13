@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nginx:
+    restart: always
+    build:
+      context: ./.docker/nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./dist:/var/www
+      - ./.docker/nginx/site.conf:/etc/nginx/conf.d/site.conf
+      - ./.docker/nginx/logs:/var/log/nginx
+    working_dir: /var/www
+    ports:
+      - "8087:80"

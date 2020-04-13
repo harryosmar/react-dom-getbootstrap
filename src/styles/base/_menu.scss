@@ -1,123 +1,123 @@
-body {
+body#page-menu {
   background-color: #FAFAFA !important;
-}
 
-a {
-  text-decoration: none !important;
-  color: #737373 !important;
-}
-
-.search-bar {
-  background-color: #FAFAFA !important;
-}
-
-.header {
-  background-color: #21759B;
-  color: white;
-}
-
-.jumbotron, .navbar {
-  background-color: #21759B !important;
-}
-
-.navbar-brand {
-  color: white !important;
-  font-weight: 800;
-}
-
-.navbar-nav {
-  flex-direction: row !important;
-}
-
-.nav-link {
-  color: white !important;
-  text-decoration: none;
-}
-
-.menu-link:hover, .menu-link:active {
-  font-weight: 800;
-  text-decoration: none !important;
-}
-
-.display-1, .display-4, .card-title {
-  font-weight: 800 !important;
-}
-
-#close {
-  position: absolute;
-  top: 0px;
-  right: 10px;
-}
-
-.app-category {
-  color: white;
-}
-
-.category-1 {
-  background-color: #3CA0FF;
-}
-
-.category-2 {
-  background-color: #AB3CFF;
-}
-
-.category-3 {
-  background-color: #FFAB3C;
-}
-
-.footer {
-  background-color: #21759B;
-  color: white;
-}
-
-.bottom-information {
-  background-color: #243444;
-  color: white;
-}
-
-.bottom-link {
-  color: white !important;
-}
-
-.btn {
-  border-color: rgb(206, 212, 218) !important;
-  outline: 0;
-  border-width: 0 0 2px !important;
-  border-radius: 0 !important;
-  text-align: left !important;
-}
-
-.info-box {
-  width: 100%;
-  background-color: rgba(33,117,155, 0.1);
-  color: #474747 !important;
-  padding: 1rem;
-  margin: 2rem;
-}
-
-.card-img-top {
-  padding: 3rem;
-}
-
-.menu-card {
-  padding-left: 5px !important;
-  padding-right: 5px !important;
-}
-
-.card {
-  border: 0 !important;
-}
-
-@media screen and (max-width: 575.98px) {
-  .desktop-content {
-    visibility: hidden;
-    clear: both;
-    float: left;
-    margin: 10px auto 5px 20px;
-    width: 28%;
-    display: none !important;
+  a {
+    text-decoration: none !important;
+    color: #737373 !important;
   }
-  .card-img-top {
+
+  .search-bar {
+    background-color: #FAFAFA !important;
+  }
+
+  .header {
+    background-color: #21759B;
+    color: white;
+  }
+
+  .jumbotron, .navbar {
+    background-color: #21759B !important;
+  }
+
+  .navbar-brand {
+    color: white !important;
+    font-weight: 800;
+  }
+
+  .navbar-nav {
+    flex-direction: row !important;
+  }
+
+  .nav-link {
+    color: white !important;
+    text-decoration: none;
+  }
+
+  .menu-link:hover, .menu-link:active {
+    font-weight: 800;
+    text-decoration: none !important;
+  }
+
+  .display-1, .display-4, .card-title {
+    font-weight: 800 !important;
+  }
+
+  #close {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+  }
+
+  .app-category {
+    color: white;
+  }
+
+  .category-1 {
+    background-color: #3CA0FF;
+  }
+
+  .category-2 {
+    background-color: #AB3CFF;
+  }
+
+  .category-3 {
+    background-color: #FFAB3C;
+  }
+
+  .footer {
+    background-color: #21759B;
+    color: white;
+  }
+
+  .bottom-information {
+    background-color: #243444;
+    color: white;
+  }
+
+  .bottom-link {
+    color: white !important;
+  }
+
+  .btn {
+    border-color: rgb(206, 212, 218) !important;
+    outline: 0;
+    border-width: 0 0 2px !important;
+    border-radius: 0 !important;
+    text-align: left !important;
+  }
+
+  .info-box {
+    width: 100%;
+    background-color: rgba(33, 117, 155, 0.1);
+    color: #474747 !important;
     padding: 1rem;
+    margin: 2rem;
+  }
+
+  .card-img-top {
+    padding: 3rem;
+  }
+
+  .menu-card {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+
+  .card {
+    border: 0 !important;
+  }
+
+  @media screen and (max-width: 575.98px) {
+    .desktop-content {
+      visibility: hidden;
+      clear: both;
+      float: left;
+      margin: 10px auto 5px 20px;
+      width: 28%;
+      display: none !important;
+    }
+    .card-img-top {
+      padding: 1rem;
+    }
   }
 }

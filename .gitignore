@@ -6,3 +6,4 @@ dist/*.png
 .idea/
 .env
 yarn-error.log
+.docker/nginx/logs/
