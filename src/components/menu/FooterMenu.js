@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => (
+const FooterMenu = (props) => (
     <div className="bottom-information p-3">
         <div className="row">
             <div className="col-4 text-center">
@@ -15,3 +15,5 @@ export default (props) => (
         </div>
     </div>
 );
+
+export default FooterMenu;

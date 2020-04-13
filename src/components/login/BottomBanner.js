@@ -1,9 +1,11 @@
 import React from 'react';
 
-export default (props) => (
+const BottomBanner = (props) => (
     <img
         src="img/bottom_right_banner.svg"
         className="bottom-image"
         height="8%"
     />
 );
+
+export default BottomBanner;

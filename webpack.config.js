@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/app.js',
@@ -9,7 +10,8 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: process.env.PORT || 9000
+    port: process.env.PORT || 9000,
+    historyApiFallback: true
   },
   module: {
     rules: [
@@ -41,5 +43,14 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new Dotenv({
+      path: './.env', // load this now instead of the ones in '.env'
+      safe: true, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
+      systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+      silent: true, // hide any errors
+      defaults: false // load '.env.defaults' as the default values if empty.
+    }),
+  ],
   devtool: 'inline-source-map'
 };

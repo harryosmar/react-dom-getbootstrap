@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => (
+const SideBarContent = (props) => (
     <div className="content">
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fringilla non elit
@@ -12,3 +12,5 @@ export default (props) => (
         </p>
     </div>
 );
+
+export default SideBarContent;

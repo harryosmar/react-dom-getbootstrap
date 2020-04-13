@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => (
+const Form = (props) => (
     <form>
         <div className="form-group">
             <div className="inner-addon left-addon">
@@ -31,3 +31,5 @@ export default (props) => (
         </div>
     </form>
 );
+
+export default Form;

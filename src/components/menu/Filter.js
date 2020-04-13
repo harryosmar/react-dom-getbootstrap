@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => (
+const Filter = (props) => (
     <div className="row">
         <div className="col-5 col-md-4 col-lg-3">
             <div className="dropdown">
@@ -25,3 +25,5 @@ export default (props) => (
         </div>
     </div>
 );
+
+export default Filter;

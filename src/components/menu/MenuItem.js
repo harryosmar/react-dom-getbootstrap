@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default class MenuItem extends React.Component {
-
     render() {
         return <div className="col-6 col-md-4 col-lg-3 my-2 menu-card">
             <a href="#">

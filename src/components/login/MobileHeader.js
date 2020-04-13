@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => (
+const MobileHeader =  (props) => (
     <div className="header mobile-content">
         <h1 className="logo">
             {props.app_name}
@@ -10,3 +10,5 @@ export default (props) => (
         </h2>
     </div>
 );
+
+export default MobileHeader;

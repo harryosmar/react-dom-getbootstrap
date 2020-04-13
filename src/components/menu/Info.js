@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => (
+const Info = (props) => (
     <div className="row">
         <div className="col info-box">
             <a id="close">&times;</a>
@@ -11,3 +11,5 @@ export default (props) => (
         </div>
     </div>
 );
+
+export default Info;

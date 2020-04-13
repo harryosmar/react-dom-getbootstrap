@@ -4,3 +4,5 @@ dist/*.png
 !storage/img/
 .vscode/
 .idea/
+.env
+yarn-error.log

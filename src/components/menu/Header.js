@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => (
+const Header = (props) => (
     <div className="header">
         <div className="jumbotron jumbotron-fluid">
             <div className="container text-center">
@@ -10,3 +10,5 @@ export default (props) => (
         </div>
     </div>
 );
+
+export default Header;

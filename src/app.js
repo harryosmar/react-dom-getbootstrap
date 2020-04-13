@@ -1,26 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import './styles/app.scss'
 import configureStore from './store/configureStore.js';
-import LoginIndex from './components/login/Index';
-import RegisterIndex from './components/register/Index';
-import MenuIndex from './components/menu/Index';
+import AppRouter from "./router/AppRouter";
+import {APP_NAME, HEADER_TITLE} from "./config/app";
+import MenuIndex from "./components/menu";
 
 window.Popper = require("popper.js").default;
 window.$ = window.jQuery = require('jquery');
 require("bootstrap");
 
-
 const store = configureStore();
-const appName = 'pintu';
-const headerTitle = 'Pusat Informasi dan Pelayanan Terpadu';
+
+const jsx = <AppRouter/>;
+// const jsx = <MenuIndex app_name={""} header_title={""}/>;
+
 
 ReactDOM.render(
-    (
-        // <RegisterIndex app_name={appName} header_title={headerTitle}/>
-        <MenuIndex app_name={appName} header_title={headerTitle}/>
-        // <LoginIndex app_name={appName} header_title={headerTitle}/>
-    ),
+    jsx,
     document.getElementById('app-container')
 );
