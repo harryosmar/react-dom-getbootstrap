@@ -5,12 +5,11 @@ import LoginIndex from "../components/login";
 import RegisterIndex from "../components/register";
 import {APP_NAME, HEADER_TITLE} from '../config/app';
 import NotFound from "../components/pages/NotFound";
+import Logout from "../components/pages/Logout";
 
 const AuthRoute = ({component: Component, ...rest}) => {
     return (
-        <Route
-            {...rest}
-            render={props =>
+        <Route {...rest} render={props =>
                 true ? (
                     <Component {...props} />
                 ) : (
@@ -31,7 +30,7 @@ const GuestRoute = ({component: Component, ...rest}) => {
         <Route
             {...rest}
             render={props =>
-                false ? (
+                true ? (
                     <Component {...props} />
                 ) : (
                     <Redirect
@@ -49,11 +48,10 @@ const GuestRoute = ({component: Component, ...rest}) => {
 const AppRouter = () => (
     <Router>
         <Switch>
-            <Route path="/register">
-                <RegisterIndex app_name={APP_NAME} header_title={HEADER_TITLE}/>
-            </Route>
-            <AuthRoute exact={true} path="/" component={MenuIndex}/>
+            <GuestRoute path="/register" component={RegisterIndex}/>
             <GuestRoute path="/login" component={LoginIndex}/>
+            <AuthRoute path="/logout" component={Logout}/>
+            <AuthRoute exact={true} path="/" component={MenuIndex}/>
             <Route component={NotFound}/>
         </Switch>
     </Router>
