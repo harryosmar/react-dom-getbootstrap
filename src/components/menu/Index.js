@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import Header from "./Header";
 import Info from "./Info";
 import Filter from "./Filter";
-import MenuList from "./MenuList";
+import MenuList from "./ClientList";
 import Footer from "./Footer";
 import FooterMenu from "./FooterMenu";
 
