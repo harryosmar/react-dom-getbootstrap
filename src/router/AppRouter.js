@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
-import MenuIndex from "../components/menu";
+import MenuIndex from "../components/client";
 import LoginIndex from "../components/login";
 import RegisterIndex from "../components/register";
 import {APP_NAME, HEADER_TITLE} from '../config/app';

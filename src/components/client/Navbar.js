@@ -8,7 +8,7 @@ class Navbar extends React.Component {
             <Link to="/" className="navbar-brand">pintu</Link>
             <ul className="navbar-nav ml-auto navbar-right">
                 <li className="nav-item mx-2 desktop-content">
-                    <p className="nav-link" style={{'margin-bottom': 0}}>Selamat datang, {this.props.username}</p>
+                    <p className="nav-link" style={{'marginBottom': 0}}>Selamat datang, {this.props.username}</p>
                 </li>
                 <li className="nav-item mx-2">
                     <Link to="/logout" className="nav-link menu-link">Keluar</Link>
