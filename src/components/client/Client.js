@@ -3,7 +3,7 @@ import React from 'react';
 export default class Client extends React.Component {
     render() {
         return <div className="col-6 col-md-4 col-lg-3 my-2 menu-card">
-            <a href={this.props.url}>
+            <a href={this.props.url} target='_blank'>
                 <div className="card m-auto">
                     <img className="card-img-top" src={this.props.logo}/>
                     <div className="card-body">

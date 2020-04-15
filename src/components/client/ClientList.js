@@ -1,10 +1,7 @@
 import React from 'react';
 import Client from './Client.js';
-import ClientDTO from '../../dto/client';
 import {connect} from "react-redux";
 import {getVisibleClients} from "../../selectors/clients";
-import {setClients} from "../../actions/Clients";
-import {setCategoryFilter} from "../../actions/Filters";
 
 class ClientList extends React.Component {
     render() {

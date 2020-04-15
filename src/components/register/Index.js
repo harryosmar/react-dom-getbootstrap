@@ -7,7 +7,7 @@ import ContactFooter from "./ContactFooter";
 
 export default class Index extends React.Component {
     componentDidMount() {
-        import('../../styles/base/_single_page.scss');
+        import('../../styles/components/_single_page.scss');
         document.body.id = 'page-register';
     }
 
