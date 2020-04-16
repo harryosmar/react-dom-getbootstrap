@@ -7,3 +7,4 @@ dist/*.png
 .env
 yarn-error.log
 .docker/nginx/logs/
+storage/keys/
