@@ -7,4 +7,4 @@ const getApiCompleteUrl = (path = '') => {
     return !path ? API_BASE_URL : `${API_BASE_URL}/${path}`;
 };
 
-export {APP_ENV, APP_NAME, HEADER_TITLE, getApiCompleteUrl};
+export {APP_ENV, APP_NAME, HEADER_TITLE, API_BASE_URL, getApiCompleteUrl};

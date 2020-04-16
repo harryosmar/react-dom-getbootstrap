@@ -82,7 +82,12 @@ export default class Form extends React.Component {
                     this.setState(() => ({loading: false}));
                 })
                 .catch((error) => {
-                    this.setState(() => ({loading: false, error: error.message}));
+                    console.error(error, error.response.data);
+                    if (error.response) {
+                        this.setState(() => ({loading: false, error: error.response.data.message}));
+                    } else {
+                        this.setState(() => ({loading: false, error: error.message}));
+                    }
                 });
 
         }
@@ -120,6 +125,7 @@ export default class Form extends React.Component {
         return <div>
             {this.state.error && (
                 <div className="row alert alert-danger alert-dismissible fade show" role="alert">
+                    <i className="material-icons icon icon-before-input text-danger">error</i>&nbsp;
                     {this.state.error}
                 </div>
             )}
@@ -127,7 +133,8 @@ export default class Form extends React.Component {
                 <div className="form-group">
                     <div className="inner-addon left-addon">
                         <i className={this.getInputLabelClassName(this.state.username, this.state.usernameStatus)}>email</i>
-                        <input className={this.getInputClassName(this.state.username, this.state.usernameStatus)} placeholder="masukkan email terdaftar" type="email"
+                        <input className={this.getInputClassName(this.state.username, this.state.usernameStatus)}
+                               placeholder="masukkan email terdaftar" type="email"
                                name="email"
                                value={this.state.username} onChange={this.onUsernameChange}/>
                     </div>
@@ -135,7 +142,8 @@ export default class Form extends React.Component {
                 <div className="form-group">
                     <div className="inner-addon left-addon">
                         <i className={this.getInputLabelClassName(this.state.password, this.state.passwordStatus)}>lock</i>
-                        <input className={this.getInputClassName(this.state.password, this.state.passwordStatus)} placeholder="masukkan kata sandi" type="password"
+                        <input className={this.getInputClassName(this.state.password, this.state.passwordStatus)}
+                               placeholder="masukkan kata sandi" type="password"
                                name="password"
                                value={this.state.password} onChange={this.onPasswordChange}/>
                     </div>
