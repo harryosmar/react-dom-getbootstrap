@@ -9,7 +9,9 @@ export default class Form extends React.Component {
 
         this.state = {
             username: '',
+            usernameStatus: false,
             password: '',
+            passwordStatus: false,
             error: '',
             loading: false,
         };
@@ -18,26 +20,51 @@ export default class Form extends React.Component {
     onUsernameChange = (e) => {
         const username = e.target.value;
         this.setState(() => ({username}));
+        this.validateUsername(username);
     };
 
     onPasswordChange = (e) => {
         const password = e.target.value;
         this.setState(() => ({password}));
+        this.validatePassword(password);
     };
 
-    validate = ({username = '', password = ''} = {}) => {
-        if (!username || !password) {
-            this.setState(() => ({error: 'Email dan Password harus diisi'}));
+    validateUsername = (username) => {
+        if (!username) {
+            this.setState(() => ({error: 'Email dan Password harus diisi', usernameStatus: false}));
             return false;
         }
 
         if (!isValidEmail(username)) {
-            this.setState(() => ({error: 'Email tidak valid'}));
+            this.setState(() => ({error: 'Email tidak valid', usernameStatus: false}));
             return false;
         }
 
-        this.setState(() => ({error: ''}));
+        this.setState(() => ({usernameStatus: true}));
         return true;
+    };
+
+    validatePassword = (password) => {
+        if (!password) {
+            this.setState(() => ({error: 'Email dan Password harus diisi', passwordStatus: false}));
+            return false;
+        }
+
+        this.setState(() => ({passwordStatus: true}));
+        return true;
+    };
+
+    validateForm = ({username = '', password = ''} = {}) => {
+        const isValidUsername = this.validateUsername(username);
+        const isValidPassword = this.validatePassword(password);
+
+        if (isValidUsername && isValidPassword) {
+            this.setState(() => ({error: ''}));
+
+            return true;
+        }
+
+        return false;
     };
 
     onSubmit = (e) => {
@@ -45,7 +72,7 @@ export default class Form extends React.Component {
 
         const username = this.state.username;
         const password = this.state.password;
-        const isValid = this.validate({username, password});
+        const isValid = this.validateForm({username, password});
 
         if (isValid) {
             this.setState(() => ({loading: true}));
@@ -61,21 +88,54 @@ export default class Form extends React.Component {
         }
     };
 
+    getInputLabelClassName = (value, status) => {
+        const className = "material-icons icon icon-before-input";
+
+        if (!value) {
+            return className;
+        }
+
+        if (!status) {
+            return `${className} text-danger`;
+        }
+
+        return `${className} text-success`;
+    };
+
+    getInputClassName = (value, status) => {
+        const className = "form-control";
+
+        if (!value) {
+            return className;
+        }
+
+        if (!status) {
+            return `${className} is-invalid`;
+        }
+
+        return `${className} is-valid`;
+    };
+
     render() {
         return <div>
-            {this.state.error && (<div className="alert alert-danger" role="alert">{this.state.error}</div>)}
+            {this.state.error && (
+                <div className="row alert alert-danger alert-dismissible fade show" role="alert">
+                    {this.state.error}
+                </div>
+            )}
             <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <div className="inner-addon left-addon">
-                        <i className="material-icons icon icon-before-input">email</i>
-                        <input className="form-control" placeholder="masukkan email terdaftar" type="email" name="email"
+                        <i className={this.getInputLabelClassName(this.state.username, this.state.usernameStatus)}>email</i>
+                        <input className={this.getInputClassName(this.state.username, this.state.usernameStatus)} placeholder="masukkan email terdaftar" type="email"
+                               name="email"
                                value={this.state.username} onChange={this.onUsernameChange}/>
                     </div>
                 </div>
                 <div className="form-group">
                     <div className="inner-addon left-addon">
-                        <i className="material-icons icon icon-before-input">lock</i>
-                        <input className="form-control" placeholder="masukkan kata sandi" type="password"
+                        <i className={this.getInputLabelClassName(this.state.password, this.state.passwordStatus)}>lock</i>
+                        <input className={this.getInputClassName(this.state.password, this.state.passwordStatus)} placeholder="masukkan kata sandi" type="password"
                                name="password"
                                value={this.state.password} onChange={this.onPasswordChange}/>
                     </div>

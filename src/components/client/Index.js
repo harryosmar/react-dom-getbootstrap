@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import Header from "./Header";
 import Info from "./Info";
 import Filter from "./Filter";
-import MenuList from "./ClientList";
+import ClientList from "./ClientList";
 import Footer from "./Footer";
 import FooterMenu from "./FooterMenu";
 
@@ -20,7 +20,7 @@ export default class Index extends React.Component {
             <div className="body container">
                 <Info/>
                 <Filter/>
-                <MenuList/>
+                <ClientList/>
             </div>
             <Footer/>
             <FooterMenu/>
