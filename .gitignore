@@ -8,3 +8,4 @@ dist/*.png
 yarn-error.log
 .docker/nginx/logs/
 storage/keys/
+dist/bundle.js.LICENSE.txt

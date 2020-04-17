@@ -2,6 +2,8 @@ import React from 'react';
 import Link from "react-router-dom/Link";
 import doLogin from "../../api/login";
 import {isValidEmail} from "../../validation/validator";
+import {getUserFromSession, setTokenSession} from "../../jwt/token";
+import {Redirect} from "react-router-dom";
 
 export default class Form extends React.Component {
     constructor(props) {
@@ -80,10 +82,13 @@ export default class Form extends React.Component {
             doLogin({username, password})
                 .then((response) => {
                     this.setState(() => ({loading: false}));
+                    setTokenSession(response.data.token);
+                    this.props.history.push('/')
                 })
                 .catch((error) => {
-                    console.error(error, error.response.data);
+                    console.error(error);
                     if (error.response) {
+                        console.error(error.response);
                         this.setState(() => ({loading: false, error: error.response.data.message}));
                     } else {
                         this.setState(() => ({loading: false, error: error.message}));
@@ -149,7 +154,9 @@ export default class Form extends React.Component {
                     </div>
                 </div>
                 <div className="form-action">
-                    <button className="btn btn-primary" disabled={this.state.loading}>Masuk</button>
+                    <button className="btn btn-primary"
+                            disabled={this.state.loading}>{this.state.loading ? 'Loading...' : 'masuk'}
+                    </button>
                     <Link to="/register" className="form-link">Daftar</Link>
                     <div className="form-footer-link">
                         <a href="#">Lupa kata sandi?</a>

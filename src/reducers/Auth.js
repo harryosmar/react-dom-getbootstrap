@@ -1,18 +1,16 @@
-import {ACTION_TYPE_SET_TOKEN_EXPIRED_TIME, ACTION_TYPE_SET_USERNAME} from "../actions/Auth";
+import {ACTION_TYPE_SET_USERNAME} from "../actions/Auth";
+import {getUserFromSession} from "../jwt/token";
+
+const user = getUserFromSession();
 
 const authDefaultState = {
-    username: '',
-    tokenExpiredTime: '',
+    username: user ? user.name : '',
 };
 
-
 export default (prevState = authDefaultState, action) => {
-    switch (action.type) {
-        case ACTION_TYPE_SET_USERNAME:
-            return {...prevState, username: action.username};
-        case ACTION_TYPE_SET_TOKEN_EXPIRED_TIME:
-            return {...prevState, tokenExpiredTime: action.tokenExpiredTime};
-        default:
-            return prevState;
+    if (action.type === ACTION_TYPE_SET_USERNAME) {
+        return {...prevState, username: action.username};
     }
+
+    return prevState;
 };

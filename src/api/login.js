@@ -1,5 +1,5 @@
 import qs from 'qs';
-import {getRequestToken} from "../jwt/token";
+import {getClientRequestAuthorizeToken} from "../jwt/token";
 
 const API_LOGIN_PATH = 'login';
 
@@ -8,7 +8,7 @@ const doLogin = ({username = '', password = ''} = {}) => {
         method: 'POST',
         headers: {
             'content-type': 'application/x-www-form-urlencoded',
-            ...getRequestToken()
+            ...getClientRequestAuthorizeToken()
         },
         data: qs.stringify({
             username,

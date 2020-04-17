@@ -1,9 +1,13 @@
-export const getSession = () => {
-
+const getSession = (key) => {
+    return localStorage.getItem(key);
 };
 
-export const setSession = (authCode) => {
+const setSession = (key, value) => {
+    localStorage.setItem(key, value);
 };
 
-export const removeSession = () => {
+const removeSession = (key) => {
+    localStorage.removeItem(key);
 };
+
+export {getSession, setSession, removeSession};

@@ -16,7 +16,7 @@ export default class Index extends React.Component {
             <div className="col-12 col-lg-7 col-xl-8 right-banner">
                 <div className="col-12 col-lg-8 col-xl-6 right-form">
                     <MobileHeader app_name={this.props.app_name} header_title={this.props.header_title}/>
-                    <Form/>
+                    <Form history={this.props.history}/>
                 </div>
             </div>
             <BottomBanner/>

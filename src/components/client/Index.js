@@ -15,7 +15,7 @@ export default class Index extends React.Component {
 
     render() {
         return <div>
-            <Navbar/>
+            <Navbar history={this.props.history}/>
             <Header/>
             <div className="body container">
                 <Info/>
