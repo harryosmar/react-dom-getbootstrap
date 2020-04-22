@@ -2,9 +2,12 @@ import React from 'react';
 import Link from "react-router-dom/Link";
 import doLogin from "../../api/login";
 import {isValidEmail} from "../../validation/validator";
-import {setClientsSession, setTokenSession} from "../../jwt/token";
+import {getClientsFromSession, getUserFromSession, setClientsSession, setTokenSession} from "../../jwt/token";
+import {connect} from "react-redux";
+import {setCategories, setClients} from "../../actions/Clients";
+import {setUsername} from "../../actions/Auth";
 
-export default class Form extends React.Component {
+class Form extends React.Component {
     constructor(props) {
         super(props);
 
@@ -81,8 +84,20 @@ export default class Form extends React.Component {
             doLogin({username, password})
                 .then((response) => {
                     this.setState(() => ({loading: false}));
-                    setTokenSession(response.data.token);
-                    setClientsSession(JSON.stringify(response.data.clients));
+
+                    const clients = response.data.clients;
+                    const token = response.data.token;
+
+                    setTokenSession(token);
+                    setClientsSession(JSON.stringify(clients));
+
+                    const user = getUserFromSession();
+                    const clientsState = getClientsFromSession();
+
+                    this.props.dispatch(setUsername(user.name));
+                    this.props.dispatch(setClients(clientsState.list));
+                    this.props.dispatch(setCategories(clientsState.categories));
+
                     this.props.history.push('/')
                 })
                 .catch((error) => {
@@ -158,11 +173,20 @@ export default class Form extends React.Component {
                             disabled={this.state.loading}>{this.state.loading ? 'Loading...' : 'masuk'}
                     </button>
                     <Link to="/register" className="form-link">Daftar</Link>
-                    <div className="form-footer-link">
-                        <a href="#">Lupa kata sandi?</a>
-                    </div>
+                    {/*<div className="form-footer-link">*/}
+                    {/*    <a href="#">Lupa kata sandi?</a>*/}
+                    {/*</div>*/}
                 </div>
             </form>
         </div>
     }
 }
+
+const mapStateToProps = (state) => (
+    {
+        clients: state.clients,
+        auth: state.auth,
+    }
+);
+
+export default connect(mapStateToProps)(Form);

@@ -1,5 +1,7 @@
 import {APP_CLIENT_ID, getApiPublicKey, getAppPrivateKey} from "../config/app";
 import {getSession, removeSession, setSession} from "../auth/session";
+import ClientDTO from "../dto/client";
+import {getCategoryList} from "../selectors/filters";
 
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
@@ -69,5 +71,33 @@ const getUserFromSession = () => {
     }
 };
 
+const getClientsFromSession = () => {
+    const clientsArr = JSON.parse(getClientsSession());
 
-export {getClientRequestAuthorizeToken, setTokenSession, removeTokenSession, getUserFromSession, setClientsSession, removeClientsSession, getClientsSession};
+    if (!clientsArr) {
+        return {
+            list: [],
+            categories: [],
+        };
+    }
+
+    const clients = clientsArr.map((client) => {
+        return new ClientDTO(client);
+    });
+
+    return {
+        list: clients,
+        categories: getCategoryList(clients),
+    };
+};
+
+
+export {
+    getClientRequestAuthorizeToken,
+    setTokenSession,
+    removeTokenSession,
+    getUserFromSession,
+    getClientsFromSession,
+    setClientsSession,
+    removeClientsSession,
+};

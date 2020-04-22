@@ -2,16 +2,24 @@ import React from "react";
 import {removeSession} from "../../auth/session";
 import {Redirect} from "react-router-dom";
 import {removeClientsSession, removeTokenSession} from "../../jwt/token";
+import {connect} from "react-redux";
+import {setUsername} from "../../actions/Auth";
+import {setCategories, setClients} from "../../actions/Clients";
 
-export default class Logout extends React.Component {
+class Logout extends React.Component {
     clearSession = () => {
         removeTokenSession();
         removeClientsSession();
     };
 
-    render() {
+    componentWillMount() {
         this.clearSession();
+        this.props.dispatch(setUsername(''));
+        this.props.dispatch(setClients([]));
+        this.props.dispatch(setCategories([]));
+    }
 
+    render() {
         return <Redirect
             to={{
                 pathname: "/login",
@@ -20,3 +28,12 @@ export default class Logout extends React.Component {
         />;
     }
 }
+
+const mapStateToProps = (state) => (
+    {
+        clients: state.clients,
+        auth: state.auth,
+    }
+);
+
+export default connect(mapStateToProps)(Logout);
