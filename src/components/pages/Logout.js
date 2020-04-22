@@ -1,11 +1,16 @@
 import React from "react";
 import {removeSession} from "../../auth/session";
 import {Redirect} from "react-router-dom";
-import {removeTokenSession} from "../../jwt/token";
+import {removeClientsSession, removeTokenSession} from "../../jwt/token";
 
 export default class Logout extends React.Component {
-    render() {
+    clearSession = () => {
         removeTokenSession();
+        removeClientsSession();
+    };
+
+    render() {
+        this.clearSession();
 
         return <Redirect
             to={{

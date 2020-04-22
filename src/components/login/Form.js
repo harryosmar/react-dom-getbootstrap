@@ -2,8 +2,7 @@ import React from 'react';
 import Link from "react-router-dom/Link";
 import doLogin from "../../api/login";
 import {isValidEmail} from "../../validation/validator";
-import {getUserFromSession, setTokenSession} from "../../jwt/token";
-import {Redirect} from "react-router-dom";
+import {setClientsSession, setTokenSession} from "../../jwt/token";
 
 export default class Form extends React.Component {
     constructor(props) {
@@ -83,6 +82,7 @@ export default class Form extends React.Component {
                 .then((response) => {
                     this.setState(() => ({loading: false}));
                     setTokenSession(response.data.token);
+                    setClientsSession(JSON.stringify(response.data.clients));
                     this.props.history.push('/')
                 })
                 .catch((error) => {

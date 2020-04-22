@@ -23,17 +23,30 @@ const getClientRequestAuthorizeToken = () => {
 };
 
 const SESSION_TOKEN_KEY = 'access_token';
+const SESSION_CLIENTS_KEY = 'clients';
 
 const setTokenSession = (jwtToken) => {
     setSession(SESSION_TOKEN_KEY, jwtToken);
 };
 
-const removeTokenSession = (jwtToken) => {
+const setClientsSession = (clients) => {
+    setSession(SESSION_CLIENTS_KEY, clients);
+};
+
+const removeTokenSession = () => {
     removeSession(SESSION_TOKEN_KEY);
+};
+
+const removeClientsSession = () => {
+    removeSession(SESSION_CLIENTS_KEY);
 };
 
 const getTokenSession = () => {
     return getSession(SESSION_TOKEN_KEY);
+};
+
+const getClientsSession = () => {
+    return getSession(SESSION_CLIENTS_KEY);
 };
 
 const getPayloadFromApiToken = (token) => {
@@ -57,4 +70,4 @@ const getUserFromSession = () => {
 };
 
 
-export {getClientRequestAuthorizeToken, setTokenSession, removeTokenSession, getUserFromSession};
+export {getClientRequestAuthorizeToken, setTokenSession, removeTokenSession, getUserFromSession, setClientsSession, removeClientsSession, getClientsSession};
