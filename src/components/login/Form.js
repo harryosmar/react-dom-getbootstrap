@@ -83,33 +83,41 @@ class Form extends React.Component {
 
             doLogin({username, password})
                 .then((response) => {
-                    this.setState(() => ({loading: false}));
-
-                    const clients = response.data.clients;
-                    const token = response.data.token;
-
-                    setTokenSession(token);
-                    setClientsSession(JSON.stringify(clients));
-
-                    const user = getUserFromSession();
-                    const clientsState = getClientsFromSession();
-
-                    this.props.dispatch(setUsername(user.name));
-                    this.props.dispatch(setClients(clientsState.list));
-                    this.props.dispatch(setCategories(clientsState.categories));
-
-                    this.props.history.push('/')
+                    this.handleFormSubmitSuccess(response);
                 })
                 .catch((error) => {
-                    console.error(error);
-                    if (error.response) {
-                        console.error(error.response);
-                        this.setState(() => ({loading: false, error: error.response.data.message}));
-                    } else {
-                        this.setState(() => ({loading: false, error: error.message}));
-                    }
+                    this.handleFormSubmitError(error);
                 });
+        }
+    };
 
+
+    handleFormSubmitSuccess = (response) => {
+        this.setState(() => ({loading: false}));
+
+        const clients = response.data.clients;
+        const token = response.data.token;
+
+        setTokenSession(token);
+        setClientsSession(JSON.stringify(clients));
+
+        const user = getUserFromSession();
+        const clientsState = getClientsFromSession();
+
+        this.props.dispatch(setUsername(user.name));
+        this.props.dispatch(setClients(clientsState.list));
+        this.props.dispatch(setCategories(clientsState.categories));
+
+        this.props.history.push('/');
+    };
+
+    handleFormSubmitError = (error) => {
+        console.error(error);
+        if (error.response) {
+            console.error(error.response);
+            this.setState(() => ({loading: false, error: error.response.data.message}));
+        } else {
+            this.setState(() => ({loading: false, error: error.message}));
         }
     };
 
