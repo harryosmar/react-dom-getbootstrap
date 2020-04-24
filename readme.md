@@ -7,5 +7,7 @@ cd getbootstrap
 
 yarn install
 
+cp .env.example .env
+
 yarn start
 ```
