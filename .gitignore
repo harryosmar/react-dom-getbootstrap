@@ -1,6 +1,8 @@
 node_modules/
 dist/*.js
 dist/*.png
+dist/*.svg
+dist/*.txt
 !storage/img/
 .vscode/
 .idea/
