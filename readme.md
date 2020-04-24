@@ -1,9 +1,9 @@
 # How to start
 
 ```
-git clone git@gitlab.com:pintu-ristek/sso-page.git
+git clone git@github.com:harryosmar/react-dom-getbootstrap.git getbootstrap
 
-cd sso-page
+cd getbootstrap
 
 yarn install
 
