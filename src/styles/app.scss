@@ -1,3 +1,14 @@
 @import '~bootstrap';
+@import "~metronic-template";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,800&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+//dashboard
+@import '~metronic-template/theme/classic/assets/vendors/general/perfect-scrollbar/css/perfect-scrollbar.css';
+@import '~metronic-template/theme/classic/assets/vendors/custom/vendors/flaticon/flaticon.css';
+@import '~metronic-template/theme/classic/assets/vendors/custom/vendors/flaticon2/flaticon.css';
+@import '~metronic-template/theme/classic/assets/vendors/custom/vendors/line-awesome/css/line-awesome.css';
+@import '~metronic-template/theme/classic/assets/vendors/general/@fortawesome/fontawesome-free/css/all.min.css';
+@import '~metronic-template/theme/classic/assets/vendors/general/@fortawesome/fontawesome-free/css/fontawesome.css';
+//@import '~bootstrap-switch';
+@import '~metronic-template/theme/classic/assets/vendors/general/select2/dist/css/select2.css';
