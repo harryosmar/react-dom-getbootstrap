@@ -1,57 +1,48 @@
 {
-  "name": "es6-guides-getting-started",
+  "name": "react-dom-getbootstrap",
   "version": "1.0.0",
-  "description": "jest setup",
-  "main": "index.js",
+  "description": "",
+  "main": "webpack.config.js",
   "scripts": {
-    "test": "jest --watch",
-    "build": "webpack --mode=development --devtool=inline-source-map --config webpack.config.js",
-    "build-prod": "webpack --optimize-minimize --mode=production --config webpack.config.js",
-    "watch": "webpack --watch",
-    "start": "webpack-dev-server --open"
+    "lint": "eslint --ext .jsx,.js src",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --hot --open --port 3200"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harryosmar/es6-guides-getting-started.git"
+    "url": "git+https://github.com/harryosmar/react-dom-getbootstrap.git"
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/pintu-ristek/sso-page",
+  "bugs": {
+    "url": "https://github.com/harryosmar/react-dom-getbootstrap/issues"
+  },
+  "homepage": "https://github.com/harryosmar/react-dom-getbootstrap#readme",
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.0.0",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
     "dotenv-webpack": "^1.7.0",
     "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.2.0",
     "image-webpack-loader": "^6.0.0",
-    "jest": "^24.8.0",
-    "normalize.css": "^8.0.1",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "terser-webpack-plugin": "^2.3.5",
-    "webpack": "^4.31.0",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.0"
+    "node-sass": "^4.14.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "@material/textfield": "^5.1.0",
-    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
-    "jquery": "^3.4.1",
-    "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.11",
-    "moment": "^2.24.0",
-    "node-sass": "^4.12.0",
+    "jquery": "^3.5.0",
     "popper.js": "^1.16.1",
-    "qs": "^6.9.3",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-redux": "^7.1.0",
-    "react-router-dom": "4.2.2",
-    "redux": "^4.0.1",
-    "typescript": "^3.8.3"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   }
 }

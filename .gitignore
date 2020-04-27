@@ -1,13 +1,5 @@
 node_modules/
-dist/*.js
-dist/*.png
-dist/*.svg
-dist/*.txt
-!storage/img/
 .vscode/
 .idea/
 .env
 yarn-error.log
-.docker/nginx/logs/
-storage/keys/
-dist/bundle.js.LICENSE.txt

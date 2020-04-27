@@ -1,13 +1,36 @@
-const path = require('path');
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const getFilesFromDir = require("./config/files");
 const Dotenv = require('dotenv-webpack');
-const TerserPlugin = require('terser-webpack-plugin');
+const PAGE_DIR = path.join("src", "pages", path.sep);
 
-module.exports = {
-    entry: './src/app.js',
+const htmlPlugins = getFilesFromDir(PAGE_DIR, [".html"]).map(filePath => {
+    const fileName = filePath.replace(PAGE_DIR, "");
+    // { chunks:["contact", "vendor"], template: "src/pages/contact.html",  filename: "contact.html"}
+    return new HtmlWebPackPlugin({
+        chunks: [
+            fileName.replace(path.extname(fileName), ""),
+            "vendor"
+        ],
+        template: filePath,
+        filename: fileName
+    })
+});
+
+// { contact: "./src/pages/contact.js" }
+const entry = getFilesFromDir(PAGE_DIR, [".js"]).reduce((obj, filePath) => {
+    const entryChunkName = filePath.replace(path.extname(filePath), "").replace(PAGE_DIR, "");
+    obj[entryChunkName] = `./${filePath}`;
+    return obj;
+}, {});
+
+module.exports = (env, argv) => ({
+    entry: entry,
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: '[name].[hash:4].js',
+        path: path.resolve(__dirname, 'build')
     },
+    devtool: argv.mode === 'production' ? false : 'eval-source-maps',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
@@ -19,13 +42,26 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        plugins: ["@babel/plugin-proposal-class-properties"],
+                        presets: [
+                            "@babel/preset-env",
+                            "@babel/preset-react"
+                        ],
+                    }
+                },
             },
             {
                 test: /\.s?css$/,
+                exclude: /node_modules/,
                 use: [
                     'style-loader',
-                    'css-loader',
+                    {
+                        loader: "css-loader",
+                        options: {modules: true}
+                    },
                     'sass-loader'
                 ]
             },
@@ -52,12 +88,19 @@ module.exports = {
             silent: true, // hide any errors
             defaults: false // load '.env.defaults' as the default values if empty.
         }),
+        ...htmlPlugins,
     ],
     optimization: {
-        minimizer: [
-            new TerserPlugin({
-                test: /\.js(\?.*)?$/i,
-            }),
-        ],
+        minimize: argv.mode === 'production',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /node_modules/,
+                    chunks: "initial",
+                    name: "vendor",
+                    enforce: true
+                }
+            }
+        }
     },
-};
+});
