@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@material/textfield": "^5.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "jsonwebtoken": "^8.5.1",
